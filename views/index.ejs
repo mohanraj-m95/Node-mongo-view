@@ -1,0 +1,61 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./../public/styles.css">
+    <title>Employee Management</title>
+</head>
+
+<body>
+    <div class="details content">
+        <h1>Apollonia Dental Practice:</h1>
+        <h2>All Employee List:</h1>
+            <table>
+                <thead>
+                    <th colspan="6">
+                        <form action="/employee/create" method="get">
+                            <button type="submit">Add new employee</button>
+                        </form>
+                    </th>
+                </thead>
+                <thead>
+                    <th>No:</th>
+                    <th>Name:</th>
+                    <th>Surname:</th>
+                    <th>Department:</th>
+                    <th>Edit:</th>
+                    <th>Delete:</th>
+                </thead>
+                <tbody>
+                    <% if (employees.length> 0) { %>
+                        <% employees.forEach(eachuser=> { %>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <%= eachuser.name%>
+                                </td>
+                                <td>
+                                    <%= eachuser.surname%>
+                                </td>
+                                <td>
+                                    <%= eachuser.department%>
+                                </td>
+                                <td>
+                                    <form action="/edit/<%= eachuser._id %>" method="edit">
+                                        <button type="submit">Updates</button>
+                                    </form>
+                                </td>
+                                <td>
+                                    <form action="/employee/delete/<%= eachuser._id %>" method="post">
+                                        <button type="submit">Remove</button>
+                                    </form>
+                                </td>
+                            </tr>
+                            <% })} %>
+                </tbody>
+            </table>
+    </div>
+</body>
+
+</html>
